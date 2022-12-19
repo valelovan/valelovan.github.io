@@ -107,10 +107,10 @@ input, select, textarea {
 #planet {
     position: fixed;
     text-align: center;
-    font-size: 20vh;
+    font-size: 20vw;
     font: Roboto;
-    top: 35%;
-    left: 32.5vw;
+    top: 15vh;
+    width: 100vw;
 }
 
 
@@ -118,8 +118,9 @@ input, select, textarea {
 
 #weather {
     position: fixed;
+    width: 100vw;
+    text-align: center;
     top: 55%;
-    left: 32.5vw;
 }
 
 /*Creadits*/
@@ -130,5 +131,6 @@ input, select, textarea {
     top: 95vh;
     text-align: center;
     width: 100vw;
+    height: 5vh;
     background-color: #000;
 }
