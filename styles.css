@@ -120,7 +120,7 @@ input, select, textarea {
     position: fixed;
     width: 100vw;
     text-align: center;
-    top: 55%;
+    top: 55vh;
 }
 
 
