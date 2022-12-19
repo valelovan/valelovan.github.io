@@ -2,21 +2,33 @@ let count = 0;
 
 document.querySelector("#searchButton").onclick = function() {
     const location = document.querySelector("#searchForm").value;
+    try {
+        setWeatherContent(location);
+    } catch (any) {
+        setErrorContent();
+    }
+}
+
+
+
+
+// Helper Functions
+
+function setWeatherContent(location) {
     getLocationData(location).then(function (result) {
         console.log(result); //
         getTemperature(result).then(function (result) {document.querySelector("#weather").innerHTML = result});
         getCloudCoverage(result).then(function (result) {document.querySelector("#weather").innerHTML += " " + result});
         getPrecipitation(result).then(function (result) {document.querySelector("#weather").innerHTML += " " + result});
     });
-
 }
 
 
+// Error Message Functions
 
-
-
-// Error message functions
-
+function setErrorContent() {
+    //
+}
 
 
 // API Functions
