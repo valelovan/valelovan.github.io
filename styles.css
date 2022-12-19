@@ -112,3 +112,11 @@ input, select, textarea {
     left: 32.5vw;
 }
 
+
+/*Weather Info*/
+
+#weather {
+    position: fixed;
+    top: 55%;
+    left: 32.5vw;
+}
