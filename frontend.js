@@ -19,7 +19,7 @@ function setWeatherContent(location) {
         console.log(result); //
         getTemperature(result).then(function (result) {document.querySelector("#weather").innerHTML = result});
         getCloudCoverage(result).then(function (result) {document.querySelector("#weather").innerHTML += " " + result});
-        getPrecipitation(result).then(function (result) {document.querySelector("#weather").innerHTML += " " + result});
+        getPrecipitationType(result).then(function (result) {document.querySelector("#weather").innerHTML += " " + result});
     });
 }
 
@@ -75,7 +75,7 @@ async function getCloudCoverage(json) {
 /**
 *   Retrieve precipitation
 */
-async function getPrecipitation(json) {
+async function getPrecipitationType(json) {
     if (null == json) return "";
     const perc = json.dataseries[0].prec_type;
     switch (perc) {
