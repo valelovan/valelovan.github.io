@@ -99,3 +99,15 @@ input, select, textarea {
     height: 2000px;
     overflow: scroll;
 }
+
+
+/*Planet Name*/
+
+#planet {
+    position: fixed;
+    text-align: center;
+    font-size: 20vh;
+    font: Roboto;
+    top: 35%;
+    left: 32.5vw;
+}
