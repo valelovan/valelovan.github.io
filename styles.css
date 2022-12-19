@@ -1,3 +1,101 @@
-#elements {
+@font-face {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Roboto'), local('Roboto-Regular'), url(https://fonts.gstatic.com/s/roboto/v20/KFOmCnqEu92Fr1Mu4mxKKTU1Kg.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  }
+  @font-face {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    src: local('Roboto Bold'), local('Roboto-Bold'), url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmWUlfChc4AMP6lbBP.woff2) format('woff2');
+    unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+  }
+body {
+    background: rgba(0, 0, 0, 0.815);
+}
+  *{
+    margin: 0;
+    padding: 0;
+    outline: none;
+    box-sizing: border-box;
+  }
+  .container {
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 2fr 14fr;
+  }
+  .cell {
+    /*color: white;*/
+    font-size: 3rem;
     text-align: center;
+    padding: 4rem;
+  }
+  .sideBar {
+    background-color: rgba(0, 0, 0, 0.329);
+  }
+  
+  a {
+    text-decoration: none;
+    color: rgb(100, 146, 247);
+  }
+  a:hover {
+    color: rgba(255, 255, 255, 0.973);;
+  }
+
+
+/*Search Bar*/
+  
+.input {
+    font: Roboto;
+  }
+::placeholder{
+    color: #fff;
+}
+input, select, textarea {
+    color: rgba(255, 255, 255)
+}
+.content {
+  position: fixed;
+  top: 10%;
+  left: 27.5vw;
+  background:rgba(0, 0, 0, 0.329);
+  height: 5vh;
+  width: 45vw;
+  border-radius: 15px;
+  padding: 5px;
+  display: flex;
+  justify-content: space-between;
+}
+.content .input {
+  width: 85%;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  background-color: rgba(0,0,0,0);
+  font-size: 20px;
+  position: relative;
+}
+#searchButton {
+  border: none;
+  background: rgba(0,0,0,0);
+  width: 10%;
+  border-radius: 20px;
+  position: relative;
+  cursor: pointer;
+}
+#searchButton .fas {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  font-size: 25px;
+  color: rgb(100, 146, 247);
+}
+.rightSide {
+    background: rgba(0,0,0,0);
+    height: 2000px;
+    overflow: scroll;
 }
