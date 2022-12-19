@@ -121,3 +121,14 @@ input, select, textarea {
     top: 55%;
     left: 32.5vw;
 }
+
+/*Creadits*/
+
+#credits {
+    position: relative;
+    color: #fff;
+    top: 95vh;
+    text-align: center;
+    width: 100vw;
+    background-color: #000;
+}
