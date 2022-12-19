@@ -15,34 +15,34 @@
 body {
     background: rgba(0, 0, 0, 0.815);
 }
-  *{
+*{
     margin: 0;
     padding: 0;
     outline: none;
     box-sizing: border-box;
-  }
-  .container {
+}
+.container {
     height: 100vh;
     display: grid;
     grid-template-columns: 2fr 14fr;
-  }
-  .cell {
+}
+.cell {
     /*color: white;*/
     font-size: 3rem;
     text-align: center;
     padding: 4rem;
-  }
-  .sideBar {
+}
+.sideBar {
     background-color: rgba(0, 0, 0, 0.329);
-  }
+}
   
-  a {
+a {
     text-decoration: none;
     color: rgb(100, 146, 247);
-  }
-  a:hover {
+}
+a:hover {
     color: rgba(255, 255, 255, 0.973);;
-  }
+}
 
 
 /*Search Bar*/
@@ -111,3 +111,4 @@ input, select, textarea {
     top: 35%;
     left: 32.5vw;
 }
+
