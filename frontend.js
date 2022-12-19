@@ -29,7 +29,8 @@ const Planet = {
     HOTH: "HOTH",
     BESPIN: "BESPIN",
     ENDOR: "ENDOR",
-    KAMINO: "KAMINO"
+    KAMINO: "KAMINO",
+    CRAIT: "CRAIT"
 }
 
 function getPlanetName() {
