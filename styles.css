@@ -49,9 +49,10 @@ a:hover {
   
 .input {
     font: Roboto;
-  }
+}
 ::placeholder{
     color: #fff;
+    font-size: 2.5vh;
 }
 input, select, textarea {
     color: rgba(255, 255, 255)
@@ -91,7 +92,7 @@ input, select, textarea {
   top: 50%;
   left: 50%;
   transform: translate(-50%,-50%);
-  font-size: 25px;
+  font-size: 5vh;
   color: rgb(100, 146, 247);
 }
 .rightSide {
