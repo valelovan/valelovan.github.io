@@ -2,15 +2,13 @@ let count = 0;
 
 document.querySelector("#searchButton").onclick = function() {
     const location = document.querySelector("#searchForm").value;
-    getTemperature(location).then(function (result) {
-        document.querySelector("#weather").innerHTML = result
+    getLocationData(location).then(function (result) {
+        console.log(result); //
+        getTemperature(result).then(function (result) {document.querySelector("#weather").innerHTML = result});
+        getCloudCoverage(result).then(function (result) {document.querySelector("#weather").innerHTML += " " + result});
+        getPrecipitation(result).then(function (result) {document.querySelector("#weather").innerHTML += " " + result});
     });
-    getCloudCoverage(location).then(function (result) {
-        document.querySelector("#weather").innerHTML += " " + result
-    });
-    getPrecipitation(location).then(function (result) {
-        document.querySelector("#weather").innerHTML += " " + result
-    });
+
 }
 
 
@@ -23,14 +21,13 @@ document.querySelector("#searchButton").onclick = function() {
 
 // API Functions
 
-
-
 /**
 *   Retrieves temperature
 */
-async function getTemperature(name) {
-    const json = await getLocationData(name);
-    return `${json.dataseries[0].temp2m} °F`;
+async function getTemperature(json) {
+    if (null == json) return "";
+    const temp = json.dataseries[0].temp2m;
+    return `${temp} °C`;
 }
 
 
@@ -38,8 +35,8 @@ async function getTemperature(name) {
 /**
 *   Retrieves cloudyness
 */
-async function getCloudCoverage(name) {
-    const json = await getLocationData(name);
+async function getCloudCoverage(json) {
+    if (null == json) return "";
     const okta = json.dataseries[0].cloudcover;
     switch (okta) {
         case 1:
@@ -66,8 +63,8 @@ async function getCloudCoverage(name) {
 /**
 *   Retrieve precipitation
 */
-async function getPrecipitation(name) {
-    const json = await getLocationData(name);
+async function getPrecipitation(json) {
+    if (null == json) return "";
     const perc = json.dataseries[0].prec_type;
     switch (perc) {
         case "none":
@@ -84,7 +81,7 @@ async function getPrecipitation(name) {
 
 
 async function getWeatherData(lon, lat) {
-    return await fetch(`https://www.7timer.info/bin/astro.php?lon=${lon}&lat=${lat}&ac=0&unit=metric&output=json&tzshift=0`)
+    return await fetch(`https://www.7timer.info/bin/astro.php?lon=${lon}&lat=${lat}&ac=0&unit=metric&output=json&tzshift=` + Math.random() % 10)
         .then(response => response.json());
 }
 
@@ -92,37 +89,23 @@ async function getWeatherData(lon, lat) {
 
 async function getLocationData(name) {
     let city = getLocationCity(name);
-    let secondary = getLocationSecondary(name);
     if (city == "") return null;
     const jsonArray = await fetch(`https://nominatim.openstreetmap.org/search.php?city=${city}&format=jsonv2`)
         .then(response => response.json());
-    let weatherJSON = getWeatherJSON(jsonArray, secondary);
+    let weatherJSON = getWeatherJSON(jsonArray);
     return getWeatherData(weatherJSON.lon, weatherJSON.lat);
 }
 
 
 
-function getWeatherJSON(jsonArray, secondary) {
-    let curr = null;
-    for (let c in jsonArray) {
-        if (curr == null) curr = c;
-        else if (c.display_name !== undefined && c.display_name.includes(secondary)) curr = c;
-    }
-    return curr;
+function getWeatherJSON(jsonArray) {
+    let size = jsonArray.length;
+    if (size >= 1) return jsonArray[0];
+    return null;
 }
 
 
 
 function getLocationCity(name) {
-    let toks = name.trim().split(" ");
-    if (toks.length == 0) return "";
-    return toks[0];
-}
-
-
-
-function getLocationSecondary(name) {
-    let toks = name.trim().split(" ");
-    if (toks.length <= 1) return "";
-    return toks[1];
+    return name.replace(" ", "_");
 }
