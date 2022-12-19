@@ -34,7 +34,13 @@ const Planet = {
 }
 
 function getPlanetName() {
+    //
+}
 
+
+
+function getQuotation() {
+    //
 }
 
 
