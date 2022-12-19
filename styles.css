@@ -107,9 +107,9 @@ input, select, textarea {
 #planet {
     position: fixed;
     text-align: center;
-    font-size: 20vw;
+    font-size: 15vw;
     font: Roboto;
-    top: 15vh;
+    top: 17.5vh;
     width: 100vw;
 }
 
