@@ -24,6 +24,19 @@ function setWeatherContent(location) {
 }
 
 
+
+const Planet = {
+    HOTH: "HOTH",
+    BESPIN: "BESPIN",
+    ENDOR: "ENDOR",
+    KAMINO: "KAMINO"
+}
+
+function getPlanetName() {
+
+}
+
+
 // Error Message Functions
 
 function setErrorContent() {
