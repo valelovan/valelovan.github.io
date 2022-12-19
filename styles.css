@@ -92,7 +92,7 @@ input, select, textarea {
   top: 50%;
   left: 50%;
   transform: translate(-50%,-50%);
-  font-size: 5vh;
+  font-size: 2.5vh;
   color: rgb(100, 146, 247);
 }
 .rightSide {
