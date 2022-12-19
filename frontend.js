@@ -8,7 +8,6 @@ document.querySelector("#searchButton").onclick = function() {
     const location = document.querySelector("#searchForm").value;
     try {
         setWeatherContent(location);
-        getQuotation();
     } catch (any) {
         setErrorContent();
     }
@@ -45,7 +44,8 @@ function getPlanetName() {
 
 
 function getQuotation() {
-    //
+    const randIndex = Math.round(Math.random() * (quotations.length - 1));
+    return quotations[randIndex];
 }
 
 
