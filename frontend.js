@@ -16,7 +16,6 @@ document.querySelector("#searchButton").onclick = function() {
 
 function setWeatherContent(location) {
     getLocationData(location).then(function (result) {
-        console.log(result); //
         getTemperature(result).then(function (result) {document.querySelector("#weather").innerHTML = result});
         getCloudCoverage(result).then(function (result) {document.querySelector("#weather").innerHTML += " " + result});
         getPrecipitationType(result).then(function (result) {document.querySelector("#weather").innerHTML += " " + result});
@@ -30,7 +29,8 @@ const Planet = {
     BESPIN: "BESPIN",
     ENDOR: "ENDOR",
     KAMINO: "KAMINO",
-    CRAIT: "CRAIT"
+    CRAIT: "CRAIT",
+    KASHYYYK: "KASHYYYK"
 }
 
 function getPlanetName() {
