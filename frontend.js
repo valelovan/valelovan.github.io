@@ -1,9 +1,14 @@
+/**
+*   This is the file containing the front-end JavaScript code
+*/
+
 let count = 0;
 
 document.querySelector("#searchButton").onclick = function() {
     const location = document.querySelector("#searchForm").value;
     try {
         setWeatherContent(location);
+        getQuotation();
     } catch (any) {
         setErrorContent();
     }
@@ -42,6 +47,7 @@ function getPlanetName() {
 function getQuotation() {
     //
 }
+
 
 
 // Error Message Functions
@@ -141,3 +147,39 @@ function getWeatherJSON(jsonArray) {
 function getLocationCity(name) {
     return name.replace(" ", "_");
 }
+
+
+
+// Resources
+
+const quotations = [
+        "\"Hello there.\" -General Kenobi",
+
+        "\"There's always a bigger fish.\" -Qui-Gon Jinn",
+
+        "\"Never underestimate a droid.\" -Leia Organa",
+
+        "\"I got a bad feeling about this.\" -Lando Calrissian",
+
+        "\"This is the way.\" -Mando",
+
+        "\"Never tell me the odds.\" -Han Solo",
+
+        "\"We stand here amidst my achievement. Not yours!\" -Director Orson Krennic",
+
+        "\"Save the rebellion! Save the dream!\" -Saw Gerrera",
+
+        "\"Rebellions are built on hope.\" -Jyn Erso",
+
+        "\"Try not. Do or do not. There is no try.\" -Yoda",
+
+        "\"Your eyes can deceive you; don't trust them.\" -Obi-Wan Kenobi",
+
+        "\"Your focus determines your reality.\" -Qui-Gon Jinn",
+
+        "\"No longer certain that one ever does win a war, I am.\" -Yoda",
+
+        "\"The ability to speak does not make you intelligent.\" -Qui-Gon Jinn",
+
+        "\"Difficult to see; always in motion is the future.\" -Yoda"
+]
