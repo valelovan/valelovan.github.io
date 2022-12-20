@@ -20,14 +20,22 @@ document.querySelector("#searchButton").onclick = function() {
 
 function setWeatherContent(location) {
     getLocationData(location).then(function (result) {
-        getTemperature(result).then(function (result) {document.querySelector("#weather").innerHTML = result});
-        getCloudCoverage(result).then(function (result) {document.querySelector("#weather").innerHTML += " " + result});
-        getPrecipitationType(result).then(function (result) {document.querySelector("#weather").innerHTML += " " + result});
+        console.log(result);
+        if (null == result) setErrorContent();
+        else setWeatherInfo(result);
         getPlanetName(result).then(function (result) {
             document.querySelector("#planet").innerHTML = result;
             document.body.style.backgroundImage = `url('${getBackgroundFile(result)}')`;
         });
     });
+}
+
+
+
+async function setWeatherInfo(result) {
+    getTemperature(result).then(function (result) {document.querySelector("#weather").innerHTML = result});
+    getCloudCoverage(result).then(function (result) {document.querySelector("#weather").innerHTML += " " + result});
+    getPrecipitationType(result).then(function (result) {document.querySelector("#weather").innerHTML += " " + result});
 }
 
 
@@ -72,8 +80,8 @@ function getBackgroundFile(planet) {
 
 // Error Message Functions
 
-function setErrorContent() {
-    //
+async function setErrorContent() {
+    document.querySelector("#weather").innerHTML = "Hello there.";
 }
 
 
