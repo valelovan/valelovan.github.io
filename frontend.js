@@ -91,7 +91,7 @@ function getBackgroundFile(planet) {
 // Error Message Functions
 
 async function setErrorContent() {
-    document.querySelector("#weather").innerHTML = "Hello there.";
+    document.querySelector("#weather").innerHTML = "Oops! Looks like there was a disturbance in the force...";
 }
 
 
@@ -169,6 +169,7 @@ async function getLocationData(name) {
     const jsonArray = await fetch(`https://nominatim.openstreetmap.org/search.php?city=${city}&format=jsonv2`)
         .then(response => response.json());
     let weatherJSON = getWeatherJSON(jsonArray);
+    if (null == weatherJSON) return null;
     return getWeatherData(weatherJSON.lon, weatherJSON.lat);
 }
 
