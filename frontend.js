@@ -2,7 +2,7 @@
 *   This is the file containing the front-end JavaScript code
 */
 
-let count = 0;
+const RESOURCE_PATH = "resources/";
 
 document.querySelector("#searchButton").onclick = function() {
     const location = document.querySelector("#searchForm").value;
@@ -25,7 +25,7 @@ function setWeatherContent(location) {
         getPrecipitationType(result).then(function (result) {document.querySelector("#weather").innerHTML += " " + result});
         getPlanetName(result).then(function (result) {
             document.querySelector("#planet").innerHTML = result;
-            document.body.style.backgroundImage = "url('resources/Bespin.jpg')";
+            document.body.style.backgroundImage = `url('${getBackgroundFile(result)}')`;
         });
     });
 }
@@ -64,8 +64,8 @@ async function getPlanetName(json) {
 
 
 
-function getBackground(planet) {
-    
+function getBackgroundFile(planet) {
+    return RESOURCE_PATH + planet + ".jpg";
 }
 
 
