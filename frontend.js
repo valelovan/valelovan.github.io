@@ -49,12 +49,12 @@ async function getPlanetName(json) {
     const temp = json.dataseries[0].temp2m;
     const cloudcover = json.dataseries[0].cloudcover;
 
-    if ("snow" == precType || "icep" == precType || temp < 8)
-        return Planet.HOTH;
     if ("rain" == precType || "frzr" == precType)
         return Planet.KAMINO;
     if (cloudcover > 5)
         return Planet.BESPIN;
+    if ("snow" == precType || "icep" == precType || temp < 8)
+        return Planet.HOTH;
     if (temp > 30)
         return Planet.TATOOINE;
 

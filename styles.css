@@ -108,6 +108,8 @@ input, select, textarea {
     position: fixed;
     text-align: center;
     font-size: 15vw;
+    color: #fff;
+    text-shadow: 1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000;
     font: Roboto;
     top: 17.5vh;
     width: 100vw;
@@ -120,6 +122,8 @@ input, select, textarea {
     position: fixed;
     width: 100vw;
     text-align: center;
+    color: #fff;
+    text-shadow: 1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000;
     top: 55vh;
 }
 
