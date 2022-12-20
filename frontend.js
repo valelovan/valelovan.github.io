@@ -23,7 +23,10 @@ function setWeatherContent(location) {
         getTemperature(result).then(function (result) {document.querySelector("#weather").innerHTML = result});
         getCloudCoverage(result).then(function (result) {document.querySelector("#weather").innerHTML += " " + result});
         getPrecipitationType(result).then(function (result) {document.querySelector("#weather").innerHTML += " " + result});
-        getPlanetName(result).then(function (result) {document.querySelector("#planet").innerHTML = result});
+        getPlanetName(result).then(function (result) {
+            document.querySelector("#planet").innerHTML = result;
+            document.body.style.backgroundImage = "url('resources/Bespin.jpg')";
+        });
     });
 }
 
@@ -61,8 +64,8 @@ async function getPlanetName(json) {
 
 
 
-function setBackground() {
-    //
+function getBackground(planet) {
+    
 }
 
 
