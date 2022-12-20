@@ -23,6 +23,7 @@ function setWeatherContent(location) {
         getTemperature(result).then(function (result) {document.querySelector("#weather").innerHTML = result});
         getCloudCoverage(result).then(function (result) {document.querySelector("#weather").innerHTML += " " + result});
         getPrecipitationType(result).then(function (result) {document.querySelector("#weather").innerHTML += " " + result});
+        getPlanetName(result).then(function (result) {document.querySelector("#planet").innerHTML = result});
     });
 }
 
@@ -37,7 +38,7 @@ const Planet = {
     ALDERAAN: "ALDERAAN"
 }
 
-function getPlanetName(json) {
+async function getPlanetName(json) {
     if (null == json)
         return Planet.ALDERAAN;
 
@@ -45,13 +46,13 @@ function getPlanetName(json) {
     const temp = json.dataseries[0].temp2m;
     const cloudcover = json.dataseries[0].cloudcover;
 
-    if ("snow" == prec_type || "icep" == prec_type || temp < 8)
+    if ("snow" == precType || "icep" == precType || temp < 8)
         return Planet.HOTH;
-    if ("rain" == prec_type || "frzr" == prec_type)
+    if ("rain" == precType || "frzr" == precType)
         return Planet.KAMINO;
     if (cloudcover > 5)
         return Planet.BESPIN;
-    if (temp > 32)
+    if (temp > 30)
         return Planet.TATOOINE;
 
     // Default to Endor
