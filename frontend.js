@@ -5,6 +5,20 @@
 const RESOURCE_PATH = "resources/";
 
 document.querySelector("#searchButton").onclick = function() {
+    search();
+}
+
+
+
+document.querySelector("#searchForm").addEventListener("keydown", function (event) {
+    if (event.code === "Enter") search();
+});
+
+
+
+// Helper Functions
+
+function search() {
     const location = document.querySelector("#searchForm").value;
     try {
         setWeatherContent(location);
@@ -15,12 +29,8 @@ document.querySelector("#searchButton").onclick = function() {
 
 
 
-
-// Helper Functions
-
 function setWeatherContent(location) {
     getLocationData(location).then(function (result) {
-        console.log(result);
         if (null == result) setErrorContent();
         else setWeatherInfo(result);
         getPlanetName(result).then(function (result) {
@@ -59,10 +69,10 @@ async function getPlanetName(json) {
 
     if ("rain" == precType || "frzr" == precType)
         return Planet.KAMINO;
-    if (cloudcover > 5)
-        return Planet.BESPIN;
     if ("snow" == precType || "icep" == precType || temp < 8)
         return Planet.HOTH;
+    if (cloudcover > 5)
+        return Planet.BESPIN;
     if (temp > 30)
         return Planet.TATOOINE;
 
