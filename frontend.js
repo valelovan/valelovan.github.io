@@ -33,12 +33,29 @@ const Planet = {
     BESPIN: "BESPIN",
     ENDOR: "ENDOR",
     KAMINO: "KAMINO",
-    CRAIT: "CRAIT",
-    KASHYYYK: "KASHYYYK"
+    TATOOINE: "TATOOINE",
+    ALDERAAN: "ALDERAAN"
 }
 
-function getPlanetName() {
-    //
+function getPlanetName(json) {
+    if (null == json)
+        return Planet.ALDERAAN;
+
+    const precType = json.dataseries[0].prec_type;
+    const temp = json.dataseries[0].temp2m;
+    const cloudcover = json.dataseries[0].cloudcover;
+
+    if ("snow" == prec_type || "icep" == prec_type || temp < 8)
+        return Planet.HOTH;
+    if ("rain" == prec_type || "frzr" == prec_type)
+        return Planet.KAMINO;
+    if (cloudcover > 5)
+        return Planet.BESPIN;
+    if (temp > 32)
+        return Planet.TATOOINE;
+
+    // Default to Endor
+    return Planet.ENDOR;
 }
 
 
